@@ -1,0 +1,18 @@
+{
+    "name": "acf/new-arrivals",
+    "title": "New Arrivals",
+    "description": "A custom New Arrivals block.",
+    "style": [
+        "file:../../dist/output.css"
+    ],
+    "category": "custom",
+    "icon": "block-default",
+    "keywords": [
+        "New Arrivals"
+    ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "new-arrivals.php"
+    },
+    "align": "full"
+}

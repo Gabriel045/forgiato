@@ -4,8 +4,8 @@ get_header();
 
 ?>
 
-<main class=" font-Roboto ">
-   
+<main class="">
+   <?php the_content() ?>
 </main>
 
 <?php
