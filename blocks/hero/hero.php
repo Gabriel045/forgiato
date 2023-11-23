@@ -31,7 +31,7 @@ $button2        = get_field('button2');
 
 <section class="relative lg:h-[800px] h-[785px] lightgray overflow-x-hidden">
     <div class="absolute z-50  max-w-[1440px] w-full px-[30px] lg:px-[102px] abs-center ">
-        <h1 class="lg:w-[75%]"> <?php echo $title ?> </h1>
+        <h1 class="lg:w-[75%] text-white"> <?php echo $title ?> </h1>
         <p class="text-white lg:w-[72%] my-[50px]"> <?php echo $text ?> </p>
         <div class="flex gap-[15px] flex-wrap">
             <?php if (!empty($button['url']["url"])) : ?>

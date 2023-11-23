@@ -45,7 +45,7 @@ $wp_query = new WP_Query($args);
                     </div>
                 <?php endforeach ?>
             </div>
-            <div class="buttons absolute flex justify-between w-full top-[50%]" style="transform:traslate(0% , -50%)">
+            <div class="buttons absolute flex justify-between w-full top-[50%]" style="transform:translate(0% , -50%)">
                 <span class="inline-block  z-50 prev"> <img class="cursor-pointer" src="<?php echo  get_stylesheet_directory_uri() ?>/assets/images/prev.svg" alt=""></span>
                 <span class="inline-block  z-50 next"> <img class="cursor-pointer" src="<?php echo  get_stylesheet_directory_uri() ?>/assets/images/next.svg" alt=""></span>
             </div>

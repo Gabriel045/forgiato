@@ -15,9 +15,9 @@
   <header id="header_menu" class="overflow-x-clip flex justify-center relative ">
     <div class="hero max-w-[1440px] w-full  py-[25px] bg-white flex">
       <div class="w-[20%] lg:w-[10%] flex items-center">
-        <div class="logo">
+        <a href="/home" class="logo">
           <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/logo.svg" alt="">
-        </div>
+</a>
       </div>
       <div class="hidden lg:flex items-center w-[95%] justify-end">
         <?php echo wp_nav_menu(array(
@@ -51,8 +51,6 @@
   <script>
     setTimeout(() => {
       let mobile = document.querySelector(".menu-mobile")
-      console.log(mobile);
-
       mobile.addEventListener('click', () => {
         console.log("click");
         document.querySelector(".menu-mobile-container").classList.toggle('active')
