@@ -15,9 +15,9 @@
   <header id="header_menu" class="overflow-x-clip flex justify-center relative ">
     <div class="hero max-w-[1440px] w-full  py-[25px] bg-white flex">
       <div class="w-[20%] lg:w-[10%] flex items-center">
-        <a href="/home" class="logo">
+        <a href="<?php echo get_site_url() ?>" class="logo">
           <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/logo.svg" alt="">
-</a>
+        </a>
       </div>
       <div class="hidden lg:flex items-center w-[95%] justify-end">
         <?php echo wp_nav_menu(array(

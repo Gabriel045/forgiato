@@ -397,8 +397,10 @@ ul.menu .button a:hover {
     transform: translateX(-2px);
 }
 
-.single-right:hover img,
-.single-right:hover span {
+.single-right:hover img {
+    transform: translateX(2px);
+}
+.single-right-series:hover span {
     transform: translateX(2px);
 }
 
@@ -420,6 +422,9 @@ ul.menu .button a:hover {
     color: white !important;
 }
 
+.block_content .letter-spacing{
+    letter-spacing: 14.4px;
+}
 
 @media screen and (max-width: 1350px) {
     .hero {
@@ -499,5 +504,10 @@ ul.menu .button a:hover {
         max-width: 1440px;
         padding: 60px 40px;
         width: 100%;
+    }
+
+    .block_content .letter-spacing {
+        font-size: 24px !important;
+        letter-spacing: 9.6px !important;
     }
 }

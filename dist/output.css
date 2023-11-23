@@ -576,6 +576,10 @@ video {
   position: relative;
 }
 
+.bottom-\[20px\] {
+  bottom: 20px;
+}
+
 .bottom-\[48px\] {
   bottom: 48px;
 }
@@ -643,8 +647,8 @@ video {
   margin-bottom: 50px;
 }
 
-.mb-\[76px\] {
-  margin-bottom: 76px;
+.mb-\[56px\] {
+  margin-bottom: 56px;
 }
 
 .mb-\[80px\] {
@@ -659,6 +663,10 @@ video {
   margin-right: 14px;
 }
 
+.mr-\[20px\] {
+  margin-right: 20px;
+}
+
 .mr-\[2px\] {
   margin-right: 2px;
 }
@@ -671,10 +679,6 @@ video {
   margin-top: 100px;
 }
 
-.mt-\[140px\] {
-  margin-top: 140px;
-}
-
 .mt-\[20px\] {
   margin-top: 20px;
 }
@@ -683,20 +687,20 @@ video {
   margin-top: 30px;
 }
 
+.mt-\[32px\] {
+  margin-top: 32px;
+}
+
 .mt-\[50px\] {
   margin-top: 50px;
 }
 
-.mt-\[90px\] {
-  margin-top: 90px;
-}
-
-.mb-\[56px\] {
-  margin-bottom: 56px;
-}
-
 .mt-\[56px\] {
   margin-top: 56px;
+}
+
+.mt-\[90px\] {
+  margin-top: 90px;
 }
 
 .block {
@@ -713,6 +717,10 @@ video {
 
 .hidden {
   display: none;
+}
+
+.aspect-video {
+  aspect-ratio: 16 / 9;
 }
 
 .h-\[785px\] {
@@ -760,20 +768,8 @@ video {
   width: 22px;
 }
 
-.w-\[430px\] {
-  width: 430px;
-}
-
 .w-\[45px\] {
   width: 45px;
-}
-
-.w-\[474px\] {
-  width: 474px;
-}
-
-.w-\[50\%\] {
-  width: 50%;
 }
 
 .w-\[80\%\] {
@@ -809,10 +805,6 @@ video {
   cursor: pointer;
 }
 
-.flex-row {
-  flex-direction: row;
-}
-
 .flex-col {
   flex-direction: column;
 }
@@ -823,10 +815,6 @@ video {
 
 .items-center {
   align-items: center;
-}
-
-.justify-start {
-  justify-content: flex-start;
 }
 
 .justify-end {
@@ -877,16 +865,16 @@ video {
   gap: 40px;
 }
 
+.gap-\[50px\] {
+  gap: 50px;
+}
+
 .gap-\[5px\] {
   gap: 5px;
 }
 
 .gap-\[8px\] {
   gap: 8px;
-}
-
-.gap-y-\[100px\] {
-  row-gap: 100px;
 }
 
 .gap-y-\[50px\] {
@@ -1439,8 +1427,11 @@ ul.menu .button a:hover {
   transform: translateX(-2px);
 }
 
-.single-right:hover img,
-.single-right:hover span {
+.single-right:hover img {
+  transform: translateX(2px);
+}
+
+.single-right-series:hover span {
   transform: translateX(2px);
 }
 
@@ -1461,6 +1452,10 @@ ul.menu .button a:hover {
 .slick-dots li button:before {
   font-size: 12px !important;
   color: white !important;
+}
+
+.block_content .letter-spacing{
+  letter-spacing: 14.4px;
 }
 
 @media screen and (max-width: 1350px) {
@@ -1538,6 +1533,11 @@ ul.menu .button a:hover {
     padding: 60px 40px;
     width: 100%;
   }
+
+  .block_content .letter-spacing {
+    font-size: 24px !important;
+    letter-spacing: 9.6px !important;
+  }
 }
 
 .after\:absolute::after {
@@ -1601,20 +1601,12 @@ ul.menu .button a:hover {
 }
 
 @media (min-width: 768px) {
+  .md\:mr-\[30px\] {
+    margin-right: 30px;
+  }
+
   .md\:flex {
     display: flex;
-  }
-
-  .md\:w-\[\] {
-    width: ;
-  }
-
-  .md\:w-\[8\] {
-    width: 8;
-  }
-
-  .md\:w-\[85\] {
-    width: 85;
   }
 
   .md\:w-\[85\%\] {
@@ -1631,12 +1623,16 @@ ul.menu .button a:hover {
     margin-bottom: 120px;
   }
 
+  .lg\:mb-\[76px\] {
+    margin-bottom: 76px;
+  }
+
   .lg\:mt-0 {
     margin-top: 0px;
   }
 
-  .lg\:mb-\[76px\] {
-    margin-bottom: 76px;
+  .lg\:mt-\[100px\] {
+    margin-top: 100px;
   }
 
   .lg\:mt-\[140px\] {
@@ -1653,6 +1649,10 @@ ul.menu .button a:hover {
 
   .lg\:hidden {
     display: none;
+  }
+
+  .lg\:h-\[544px\] {
+    height: 544px;
   }
 
   .lg\:h-\[800px\] {
@@ -1675,6 +1675,14 @@ ul.menu .button a:hover {
     width: 25%;
   }
 
+  .lg\:w-\[430px\] {
+    width: 430px;
+  }
+
+  .lg\:w-\[474px\] {
+    width: 474px;
+  }
+
   .lg\:w-\[50\%\] {
     width: 50%;
   }
@@ -1691,8 +1699,12 @@ ul.menu .button a:hover {
     width: 80%;
   }
 
-  .lg\:w-\[474px\] {
-    width: 474px;
+  .lg\:w-\[91\%\] {
+    width: 91%;
+  }
+
+  .lg\:w-\[90\%\] {
+    width: 90%;
   }
 
   .lg\:flex-row {
@@ -1719,8 +1731,16 @@ ul.menu .button a:hover {
     justify-content: space-between;
   }
 
+  .lg\:gap-0 {
+    gap: 0px;
+  }
+
   .lg\:gap-\[20px\] {
     gap: 20px;
+  }
+
+  .lg\:gap-y-\[100px\] {
+    row-gap: 100px;
   }
 
   .lg\:gap-y-\[40px\] {
@@ -1729,10 +1749,6 @@ ul.menu .button a:hover {
 
   .lg\:gap-y-\[60px\] {
     row-gap: 60px;
-  }
-
-  .lg\:gap-y-\[100px\] {
-    row-gap: 100px;
   }
 
   .lg\:px-\[100px\] {

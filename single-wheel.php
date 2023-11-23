@@ -53,8 +53,8 @@ $car_slider         = get_field('car_slider');
             </div>
             <div class="mt-[20px] flex lg:gap-[20px] gap-[8px]">
                 <?php foreach ($gallery as $key => $image) : ?>
-                    <div class="border-[1px] border-[#00000033]">
-                        <img src="<?php echo $image ?>" alt="">
+                    <div class="w-1/3 border-[1px] border-[#00000033]">
+                        <img class="w-full h-full object-cover" src="<?php echo $image ?>" alt="">
                     </div>
                 <?php endforeach ?>
             </div>
@@ -76,7 +76,7 @@ $car_slider         = get_field('car_slider');
                 </div>
             </div>
             <div class="mt-[100px] flex flex-col lg:flex-row lg:justify-between">
-                <div class="lgw-[430px] mb-[50px] lg:mt-0 flex gap-y-[50px] lg:gap-y-[100px] flex-col">
+                <div class="lg:w-[430px] mb-[50px] lg:mt-0 flex gap-y-[50px] lg:gap-y-[100px] flex-col">
                     <div class="flex gap-[20px]">
                         <div>
                             <img class="h-full" src="<?php echo  get_stylesheet_directory_uri() ?>/assets/images/wheel.svg" alt="">
@@ -84,7 +84,7 @@ $car_slider         = get_field('car_slider');
                         <div class="flex flex-col w-full">
                             <div class="flex justify-between">
                                 <span class="text-[16px] text-[#00000099]">Wheel Series</span>
-                                <a class="single-right cursor-pointer underline text-[16px] text-[#00000099]">Go to Series <span class="inline-block">></span> </a>
+                                <a class="single-right-series cursor-pointer underline text-[16px] text-[#00000099]">Go to Series <span class="inline-block">></span> </a>
                             </div>
                             <div class="text-[18px] lg:text-[24px]">
                                 <?php echo get_the_terms(get_the_ID(), "serie")[0]->name  ?>
@@ -138,10 +138,10 @@ $car_slider         = get_field('car_slider');
     <section>
         <div class="block_content" style="padding-top:0px">
             <div class="relative flex justify-center">
-                <div id="gallery" class="w-full md:w-[85%] lgw-[90%]">
+                <div id="gallery" class="w-full md:w-[85%] lg:w-[90%]">
                     <?php foreach ($car_slider as $key => $car) : ?>
                         <div class="slick-slide relative">
-                            <img src="<?php echo $car["image"] ?>" alt="">
+                            <img class="w-full aspect-video	lg:h-[544px] object-cover" src="<?php echo $car["image"] ?>" alt="">
                         </div>
                     <?php endforeach ?>
                 </div>
@@ -150,11 +150,11 @@ $car_slider         = get_field('car_slider');
                     <span class="inline-block  z-50 next"> <img class="cursor-pointer" src="<?php echo  get_stylesheet_directory_uri() ?>/assets/images/single-chevron-next.svg" alt=""></span>
                 </div>
             </div>
-            <div class="mt-[100px] flex justify-center items-center">
+            <div class="mt-[32px] lg:mt-[100px] flex justify-center items-center">
                 <span class="text-[16px] text-[#00000099] mr-[30px]">Share wheel on</span>
-                <a target="_blank" class="mr-[30px] hover:translate-y-[1px] transform" href="<?php echo $social_media["facebook"] ?>"> <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/facebook.svg" alt=""> </a>
-                <a target="_blank" class="mr-[30px] hover:translate-y-[1px] transform" href="<?php echo $social_media["google+"] ?>"> <img class="w-[22px]" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/google+.svg" alt=""> </a>
-                <a target="_blank" class="mr-[30px] hover:translate-y-[1px] transform" href="<?php echo $social_media["x"] ?>"> <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/x.svg" alt=""> </a>
+                <a target="_blank" class="mr-[20px] md:mr-[30px] hover:translate-y-[1px] transform" href="<?php echo $social_media["facebook"] ?>"> <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/facebook.svg" alt=""> </a>
+                <a target="_blank" class="mr-[20px] md:mr-[30px] hover:translate-y-[1px] transform" href="<?php echo $social_media["google+"] ?>"> <img class="w-[22px]" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/google+.svg" alt=""> </a>
+                <a target="_blank" class="mr-[20px] md:mr-[30px] hover:translate-y-[1px] transform" href="<?php echo $social_media["x"] ?>"> <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/x.svg" alt=""> </a>
                 <a target="_blank" class="hover:translate-y-[1px] transform" href="mailto:  <?php echo $mail ?>"> <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/mail.svg" alt=""> </a>
             </div>
         </div>
@@ -218,3 +218,4 @@ $car_slider         = get_field('car_slider');
 <?php
 get_footer();
 ?>
+

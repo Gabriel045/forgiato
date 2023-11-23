@@ -30,8 +30,10 @@ $wp_query = new WP_Query($args); ?>
 
 <section>
     <div class="block_content">
-        <h2><?php echo $title ?></h2>
-        <p class="text-[16px] lg:text-[18px] text-center mt-[30px]"><?php echo $headtitle  ?> </p>
+        <div class="flex flex-col items-center">
+            <h2><?php echo $title ?></h2>
+            <p class="lg:w-[80%] text-[16px] lg:text-[18px] text-center mt-[30px]"><?php echo $headtitle  ?> </p>
+        </div>
         <div class="flex flex-wrap mt-[100px] gap-y-[50px] lg:gap-y-[40px]">
             <?php foreach ($wp_query->posts as $key => $wheel) :
                 $sizes = get_field("size", $wheel->ID); ?>
@@ -61,8 +63,12 @@ $wp_query = new WP_Query($args); ?>
             <?php endforeach ?>
         </div>
         <div class="flex justify-center  mt-[90px]">
-            <a class="black-button cursor-pointer">View all arrivals</a>
+            <a href="/wheels" class="black-button cursor-pointer">View all arrivals</a>
 
         </div>
     </div>
 </section>
+
+https://wordpress-659833-4069925.cloudwaysapps.com/
+https://wordpress-659833-4069925.cloudwaysapps.com/wheels/
+https://wordpress-659833-4069925.cloudwaysapps.com/wheel/blank-ra-slant-9-2/
