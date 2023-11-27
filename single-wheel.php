@@ -28,34 +28,45 @@ $forging            = get_field('forging');
 $car_slider         = get_field('car_slider');
 
 
+
+
+array_unshift($gallery, get_the_post_thumbnail_url());
+
 //echo "<pre>";
-//var_dump($query->posts);
+//var_dump($gallery);
 //echo "</pre>";
-
-
 ?>
 
 <main>
     <section>
         <div class="single_content">
             <div class="flex lg:justify-between lg:flex-row items-center flex-col gap-y-[50px]">
-                <a href="/wheels" class="single-left flex items-center gap-[13px] cursor-pointer">
-                    <img class="" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/single-chevron-prev.svg" alt="">
+                <a href="/wheels" class="single-left flex items-center gap-[13px] cursor-pointer about">
+                    <div class="relative">
+                        <img class="black ml-[13px] mr-[2px]" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/single-chevron-prev.svg">
+                        <img class="white ml-[13px] mr-[2px] absolute top-0 opacity-0" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/single-chevron-prev-black.svg">
+                    </div>
                     <span class="text-[20px] font-[400] tracking-[6.5px]">WHEEL’S PAGE</span>
                 </a>
-                <a href="<?php echo $next_post ?>" class="single-right flex items-center gap-[13px] cursor-pointer">
+                <a href="<?php echo $next_post ?>" class="single-right flex items-center gap-[13px] cursor-pointer about">
                     <span class="text-[20px] font-[400] tracking-[6.5px]">NEXT WHEEL</span>
-                    <img class="" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/single-chevron-next.svg" alt="">
+                    <div class="relative">
+                        <img class="black ml-[13px] mr-[2px]" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/single-chevron-next.svg">
+                        <img class="white ml-[13px] mr-[2px] absolute top-0 opacity-0" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/single-chevron-next-black.svg">
+                    </div>
                 </a>
             </div>
-            <div class="main-image mt-[100px]">
-                <?php echo the_post_thumbnail('full') ?>
-            </div>
-            <div class="mt-[20px] flex lg:gap-[20px] gap-[8px]">
-                <?php foreach ($gallery as $key => $image) : ?>
-                    <div class="w-1/3 border-[1px] border-[#00000033]">
-                        <img class="w-full h-full object-cover" src="<?php echo $image ?>" alt="">
-                    </div>
+            <div class="mt-[20px] flex flex-wrap lg:gap-[20px] gap-[8px]">
+                <?php foreach ($gallery as $key => $image) :
+                    if ($key == 0) : ?>
+                        <div class="main-image mt-[100px] w-full">
+                            <img class="w-full h-full object-cover" src="<?php echo $image ?>" alt="">
+                        </div>
+                    <?php else : ?>
+                        <div class="small-image w-[31.7%] border-[1px] border-[#00000033] cursor-pointer hover:border-[#000] hover:shadow-lg" onclick="changeImage(this,'<?php echo $key ?>')">
+                            <img class="w-full h-full object-cover" src="<?php echo $image ?>" alt="">
+                        </div>
+                    <?php endif ?>
                 <?php endforeach ?>
             </div>
         </div>
@@ -67,10 +78,10 @@ $car_slider         = get_field('car_slider');
                     <h2><?php the_title() ?></h2>
                 </div>
                 <div class="w-full lg:w-[50%] flex gap-[38px] lg:justify-end flex-col lg:flex-row">
-                    <a href="#" class="w-fit h-fit text-[18px] font-[600] py-[10px] px-[15px] border-[1px] border-black flex gap-[5px] cursor-pointer transform hover:translate-y-[2px]">
+                    <a href="#" class="customize-button w-fit h-fit text-[18px] font-[600] py-[10px] px-[15px] border-[1px] border-black flex gap-[5px] cursor-pointer">
                         <img class="w-[20px]" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/doc.svg"> Request Quote
                     </a>
-                    <a href="#" class="w-fit h-fit text-[18px] font-[600] py-[10px] px-[15px] border-[1px] border-black flex gap-[5px] cursor-pointer transform hover:translate-y-[2px]">
+                    <a href="#" class="customize-button w-fit h-fit text-[18px] font-[600] py-[10px] px-[15px] border-[1px] border-black flex gap-[5px] cursor-pointer">
                         <img class="w-[20px]" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/pen.svg"> Customize
                     </a>
                 </div>
@@ -79,12 +90,12 @@ $car_slider         = get_field('car_slider');
                 <div class="lg:w-[430px] mb-[50px] lg:mt-0 flex gap-y-[50px] lg:gap-y-[100px] flex-col">
                     <div class="flex gap-[20px]">
                         <div>
-                            <img class="h-full" src="<?php echo  get_stylesheet_directory_uri() ?>/assets/images/wheel.svg" alt="">
+                            <img class="h-[75%]" src="<?php echo  get_stylesheet_directory_uri() ?>/assets/images/wheel.svg" alt="">
                         </div>
                         <div class="flex flex-col w-full">
                             <div class="flex justify-between">
                                 <span class="text-[16px] text-[#00000099]">Wheel Series</span>
-                                <a class="single-right-series cursor-pointer underline text-[16px] text-[#00000099]">Go to Series <span class="inline-block">></span> </a>
+                                <a class="single-right-series cursor-pointer underline text-[16px] text-[#00000099] hover:font-[600]">Go to Series <span class="inline-block">></span> </a>
                             </div>
                             <div class="text-[18px] lg:text-[24px]">
                                 <?php echo get_the_terms(get_the_ID(), "serie")[0]->name  ?>
@@ -93,7 +104,7 @@ $car_slider         = get_field('car_slider');
                     </div>
                     <div class="flex gap-[20px]">
                         <div>
-                            <img class="h-full" src=" <?php echo  get_stylesheet_directory_uri() ?>/assets/images/tag.svg" alt="">
+                            <img class="h-[75%]" src=" <?php echo  get_stylesheet_directory_uri() ?>/assets/images/tag.svg" alt="">
                         </div>
                         <div class="flex flex-col w-full">
                             <span class="text-[16px] text-[#00000099]">Price Tier</span>
@@ -106,12 +117,12 @@ $car_slider         = get_field('car_slider');
                 <div class="lg:w-[474px] flex gap-y-[50px] lg:gap-y-[100px] flex-col">
                     <div class="flex gap-[20px]">
                         <div>
-                            <img class="h-full" src="<?php echo  get_stylesheet_directory_uri() ?>/assets/images/forge.svg" alt="">
+                            <img class="h-[75%]" src="<?php echo  get_stylesheet_directory_uri() ?>/assets/images/forge.svg" alt="">
                         </div>
                         <div class="flex flex-col w-full">
                             <div class="flex justify-between">
                                 <span class="text-[16px] text-[#00000099]">Forging</span>
-                                <a class="cursor-pointer underline text-[16px] text-[#00000099]">What is Forging?</a>
+                                <a class="cursor-pointer underline text-[16px] text-[#00000099] hover:font-[600]">What is Forging?</a>
                             </div>
                             <div class="text-[18px] lg:text-[24px]">
                                 <?php echo $forging ?>
@@ -120,7 +131,7 @@ $car_slider         = get_field('car_slider');
                     </div>
                     <div class="flex gap-[20px]">
                         <div>
-                            <img class="h-full" src=" <?php echo  get_stylesheet_directory_uri() ?>/assets/images/size-big.svg" alt="">
+                            <img class="h-[75%]" src=" <?php echo  get_stylesheet_directory_uri() ?>/assets/images/size-big.svg" alt="">
                         </div>
                         <div class="flex flex-col w-full">
                             <span class="text-[16px] text-[#00000099]">Available Sizes</span>
@@ -146,8 +157,14 @@ $car_slider         = get_field('car_slider');
                     <?php endforeach ?>
                 </div>
                 <div class="hidden md:flex buttons absolute  justify-between w-full top-[50%]" style="transform:translate(0% , -50%)">
-                    <span class="inline-block  z-50 prev"> <img class="cursor-pointer" src="<?php echo  get_stylesheet_directory_uri() ?>/assets/images/single-chevron-prev.svg" alt=""></span>
-                    <span class="inline-block  z-50 next"> <img class="cursor-pointer" src="<?php echo  get_stylesheet_directory_uri() ?>/assets/images/single-chevron-next.svg" alt=""></span>
+                    <div class="relative prev cursor-pointer about">
+                        <img class="black ml-[13px] mr-[2px]" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/single-chevron-prev.svg">
+                        <img class="white ml-[13px] mr-[2px] absolute top-0 opacity-0" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/single-chevron-prev-black.svg">
+                    </div>
+                    <div class="relative prev cursor-pointer about">
+                        <img class="black ml-[13px] mr-[2px]" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/single-chevron-next.svg">
+                        <img class="white ml-[13px] mr-[2px] absolute top-0 opacity-0" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/single-chevron-next-black.svg">
+                    </div>
                 </div>
             </div>
             <div class="mt-[32px] lg:mt-[100px] flex justify-center items-center">
@@ -175,7 +192,7 @@ $car_slider         = get_field('car_slider');
                                 <a class="w-full inline-block" href="<?php echo get_the_permalink($wheel->ID,) ?>" class=" text-[24px] mb-[10px]"> <?php echo $wheel->post_title ?> </a>
                                 <span class="inline-block text-[16px] text-[#00000099] mt-[20px] mb-[15px]"> <?php echo get_the_terms($wheel->ID, "serie")[0]->name  ?> </span>
                                 <div class="flex">
-                                    <a href="https://wheel-builder.forgiato.com/" class="py-[10px] px-[15px] border-[1px] border-black flex gap-[5px] cursor-pointer transform hover:translate-y-[2px]">
+                                    <a href="https://wheel-builder.forgiato.com/" class="customize-button ">
                                         <img src="<?php echo get_stylesheet_directory_uri()  ?>/assets/images/tools.svg"> Customize</a>
                                 </div>
                             </div>
@@ -213,9 +230,25 @@ $car_slider         = get_field('car_slider');
 
         });
     })
+
+    //Change the order of the images by click 
+    function changeImage(element) {
+        let array = <?php echo json_encode($gallery); ?>;
+        let main = document.querySelector(".main-image")
+        let mainImage = document.querySelector(".main-image img").src
+        let elementImage = element.querySelector("img").src
+
+        function getKeyByValue(object, value) {
+            return Object.keys(object).find(key =>
+                object[key] === value);
+        }
+        currenKey = getKeyByValue(array, elementImage);
+
+        element.innerHTML = `<img class="w-full h-full object-cover" src="${mainImage}" alt="">`
+        main.innerHTML = `<img class="w-full h-full object-cover" src="${array[currenKey]}" alt="">`
+    }
 </script>
 
 <?php
 get_footer();
 ?>
-

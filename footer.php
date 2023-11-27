@@ -10,8 +10,17 @@ $footer = get_field('footer', 'option');
                     <a href="<?php echo get_site_url() ?>"> <img class="w-[45px]" src="<?php echo  get_stylesheet_directory_uri() ?>/assets/images/logo-white.svg" alt=""> </a>
                     <p class="text-white mt-[50px] mb-[56px] lg:mb-[76px] font-[400] lg:w-[80%] text-start text-[16px]"><?php echo $footer['footer_text'] ?></p>
                     <div class="flex gap-[40px] lg:justify-start lg:flex-row flex-col items-center">
-                        <a class="text-[16px] text-white font-[400] flex cursor-pointer about">About Forgiato <img class="ml-[13px] mr-[2px]" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/footer-arrow.svg"></a>
-                        <a class="text-[16px] text-white font-[400] flex cursor-pointer about">Warranty Information <img class="ml-[13px]  mr-[2px]" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/footer-arrow.svg"></a>
+                        <a class="text-[16px] text-white font-[400] flex cursor-pointer about ">About Forgiato
+                            <div class="relative">
+                                <img class="black ml-[13px] mr-[2px]" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/footer-arrow.svg">
+                                <img class="white ml-[13px] mr-[2px] absolute top-0 opacity-0" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/footer-arrow-white.svg">
+                            </div>
+                        </a>
+                        <a class="text-[16px] text-white font-[400] flex cursor-pointer about">Warranty Information
+                            <div class="relative">
+                                <img class="black ml-[13px] mr-[2px]" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/footer-arrow.svg">
+                                <img class="white ml-[13px] mr-[2px] absolute top-0 opacity-0" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/footer-arrow-white.svg">
+                            </div>
                     </div>
                 </div>
                 <div class="w-full lg:w-[50%] mt-[56px] lg:mt-0  flex flex-col">

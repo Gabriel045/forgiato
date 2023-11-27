@@ -130,15 +130,14 @@ $terms = get_terms(array(
     <div class="block_content ">
         <div class="flex gap-[38px] relative">
             <div id="search-bar" class="lg:relative lg:w-[25%] bg-[#F5F5F5] p-[25px] ">
-                <img class="hidden lg:block cursor-pointer" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/filter.svg" alt="">
                 <img class="button-search lg:hidden block cursor-pointer" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/left-chevron.svg" alt="">
                 <form id="text-search" class="flex flex-col mt-[50px]" method="POST">
                     <input class="string-search pl-[40px] p-[10px] search-input " type="text" id="string" name="string" placeholder="Search...">
-                    <input class="cursor-pointer transform hover:translate-y-[2px] bg-black py-[10px] px-[30px] text-white w-fit mt-[20px]" type="submit" value="SEARCH">
+                    <input class="form-button " type="submit" value="SEARCH">
 
                 </form>
                 <form id="check-filters" class="flex flex-col mt-[50px] border-t-[1px] border-[#00000033]" method="POST">
-                    <div class="gap-[40px] flex flex-col mt-[50px]">
+                    <div class="gap-[30px] flex flex-col mt-[50px]">
                         <label class="text-[#00000099] text-[16px]">Series</label>
                         <?php
                         foreach ($terms as $key => $term) : ?>
@@ -150,7 +149,7 @@ $terms = get_terms(array(
                         <label class="w-1/2 flex gap-[10px] float-left"><input type="checkbox" name="years[]" value="2023">2023</label>
                         <label class="w-1/2 flex gap-[10px]"><input type="checkbox" name="years[]" value="2024">2024</label>
                     </div>
-                    <div class="gap-[40px] flex flex-col  pt-[50px] border-t-[1px] border-[#00000033]">
+                    <div class="gap-[30px] flex flex-col  pt-[50px] border-t-[1px] border-[#00000033]">
                         <label class="text-[#00000099] text-[16px]">Design Type</label>
                         <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="Mesh">Mesh</label>
                         <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="Full Face">Full Face</label>
@@ -166,7 +165,7 @@ $terms = get_terms(array(
                         <label class="w-1/2 flex gap-[10px] float-left"><input type="checkbox" name="material[]" value="Flow Formed">Flow Formed</label>
                         <label class="w-1/2 flex gap-[10px] justify-center"><input type="checkbox" name="material[]" value="Forged">Forged</label>
                     </div>
-                    <div class="gap-[40px] flex flex-col mb-[50px] pb-[50px] pt-[50px] border-b-[1px] border-t-[1px] border-[#00000033]">
+                    <div class="gap-[30px] flex flex-col mb-[50px] pb-[50px] pt-[50px] border-b-[1px] border-t-[1px] border-[#00000033]">
                         <label class="text-[#00000099] text-[16px]">Vehicle Type</label>
                         <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Exotic">Exotic</label>
                         <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Dually">Dually</label>
@@ -177,7 +176,7 @@ $terms = get_terms(array(
                         <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Luxury">Luxury</label>
                         <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Motorcycle">Motorcycle</label>
                     </div>
-                    <input class="cursor-pointer transform hover:translate-y-[2px] bg-black py-[10px] px-[30px] text-white w-fit" type="submit" value="APPLY">
+                    <input class="form-button" type="submit" value="APPLY">
                 </form>
             </div>
             <div class="w-full lg:w-[75%]">
@@ -188,7 +187,6 @@ $terms = get_terms(array(
                     </span>
 
                 </div>
-                <h3 class="">lorem ipsum dolor contro</h3>
                 <div class="flex flex-wrap mt-[100px] gap-y-[50px] lg:gap-y-[60px]">
                     <?php foreach ($query->posts as $key => $wheel) : ?>
                         <div class="w-full justify-center flex  sm:w-1/2 lg:w-1/3 sm:px-[12px]">
@@ -202,7 +200,7 @@ $terms = get_terms(array(
                                     <a class="w-full inline-block" href="<?php echo get_the_permalink($wheel->ID,) ?>" class=" text-[24px] mb-[10px]"> <?php echo $wheel->post_title ?> </a>
                                     <span class="inline-block text-[16px] text-[#00000099] mt-[20px] mb-[15px]"> <?php echo get_the_terms($wheel->ID, "serie")[0]->name  ?> </span>
                                     <div class="flex">
-                                        <a href="https://wheel-builder.forgiato.com/" class="py-[10px] px-[15px] border-[1px] border-black flex gap-[5px] cursor-pointer transform hover:translate-y-[2px]">
+                                        <a href="https://wheel-builder.forgiato.com/" class="customize-button ">
                                             <img src="<?php echo get_stylesheet_directory_uri()  ?>/assets/images/tools.svg"> Customize</a>
                                     </div>
                                 </div>
