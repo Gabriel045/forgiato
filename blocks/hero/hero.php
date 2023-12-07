@@ -16,7 +16,7 @@
 
 
 // Load values and assign defaults.
-$title          = get_field('title') ?: 'Your Title here...';
+$title          = get_field('title-hero');
 $text           = get_field('paragraph');
 $slider         = get_field('slider');
 $button         = get_field('button');
@@ -29,7 +29,7 @@ $button2        = get_field('button2');
 
 ?>
 
-<section class="relative lg:h-[800px] h-[785px] lightgray overflow-x-hidden">
+<section class="relative lg:h-[950px] h-[785px] lightgray overflow-x-hidden">
     <div class="absolute z-50  max-w-[1440px] w-full px-[30px] lg:px-[102px] abs-center ">
         <h1 class="lg:w-[75%] text-white"> <?php echo $title ?> </h1>
         <p class="text-white lg:w-[72%] my-[50px]"> <?php echo $text ?> </p>
@@ -42,13 +42,13 @@ $button2        = get_field('button2');
             <?php endif ?>
         </div>
     </div>
-    <div class="multiple-items lg:h-[800px] h-[785px] w-full">
+    <div class="multiple-items lg:h-[950px] h-[785px] w-full">
         <?php foreach ($slider as $key => $item) : ?>
             <diV class="w-full slick-slide">
                 <?php if ($item["images"]['type'] == "image") : ?>
-                    <img class="w-full h-[800px] object-cover" src="<?php echo $item["images"]["url"] ?>" alt="">
+                    <img class="w-full h-[950px] object-cover" src="<?php echo $item["images"]["url"] ?>" alt="">
                 <?php elseif ($item["images"]['type'] == "video") : ?>
-                    <video class="w-full h-[800px] object-fill" muted>
+                    <video class="w-full h-[950px] object-cover" muted>
                         <source src="<?php echo $item["images"]['url'] ?>" type="video/mp4">
                     </video>
                 <?php endif ?>

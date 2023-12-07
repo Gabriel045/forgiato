@@ -1,0 +1,15 @@
+{
+    "name": "acf/about-us",
+    "title": "About Us",
+    "description": "A custom About Us block.",
+    "category": "custom",
+    "icon": "block-default",
+    "keywords": [
+        "about-us"
+    ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "about-us.php"
+    },
+    "align": "full"
+}

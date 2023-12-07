@@ -28,7 +28,7 @@ $args = array(
 $wp_query = new WP_Query($args); ?>
 
 
-<section>
+<section class="bg-background">
     <div class="block_content">
         <div class="flex flex-col items-center">
             <h2><?php echo $title ?></h2>
@@ -40,7 +40,7 @@ $wp_query = new WP_Query($args); ?>
                 <div class="w-full justify-center flex  sm:w-1/2 lg:w-1/4 sm:px-[12px]">
                     <div>
                         <div class="thumbnail">
-                            <a class=" cursor-pointer" href="<?php echo get_the_permalink($wheel->ID,) ?>">
+                            <a class=" cursor-pointer flex flex-col items-center" href="<?php echo get_the_permalink($wheel->ID,) ?>">
                                 <?php echo get_the_post_thumbnail($wheel->ID); ?>
                             </a>
                             <a class="title w-full inline-block mt-[40px]" href="<?php echo get_the_permalink($wheel->ID,) ?>" class=" text-[24px] mb-[10px]"> <?php echo $wheel->post_title ?> </a>

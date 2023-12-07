@@ -2,9 +2,7 @@
     "name": "acf/new-arrivals",
     "title": "New Arrivals",
     "description": "A custom New Arrivals block.",
-    "style": [
-        "file:../../dist/output.css"
-    ],
+
     "category": "custom",
     "icon": "block-default",
     "keywords": [

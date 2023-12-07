@@ -75,7 +75,7 @@ if (!empty($_POST['series'])) {
             array(
                 'taxonomy' => 'serie',
                 'field' => 'slug',
-                'terms' => $_POST['series'],
+                'terms' => sanitize_text_field($_POST['series']),
             )
         ),
     ];
@@ -87,7 +87,7 @@ if (!empty($_POST['years'])) {
         'relation' => 'OR',
         array(
             'key' => 'release_year',
-            'value' => $_POST['years'],
+            'value' => sanitize_text_field($_POST['years']),
         )
     ];
 };
@@ -96,7 +96,7 @@ if (!empty($_POST['years'])) {
 if (!empty($_POST['design'])) {
     array_push($args['meta_query'], array(
         'key' => 'design_type',
-        'value' => $_POST['design'],
+        'value' => sanitize_text_field($_POST['design']),
     ));
 };
 
@@ -105,7 +105,7 @@ if (!empty($_POST['design'])) {
 if (!empty($_POST['material'])) {
     array_push($args['meta_query'], array(
         'key' => 'material',
-        'value' => $_POST['material'],
+        'value' => sanitize_text_field($_POST['material']),
     ));
 };
 
@@ -114,7 +114,7 @@ if (!empty($_POST['material'])) {
 if (!empty($_POST['type'])) {
     array_push($args['meta_query'], array(
         'key' => 'vehicle_type',
-        'value' => $_POST['type'],
+        'value' => sanitize_text_field($_POST['type']),
     ));
 };
 
@@ -126,57 +126,78 @@ $terms = get_terms(array(
 ));
 ?>
 
-<section class="wheel-archive">
+<section class="wheel-archive bg-background">
     <div class="block_content ">
         <div class="flex gap-[38px] relative">
-            <div id="search-bar" class="lg:relative lg:w-[25%] bg-[#F5F5F5] p-[25px] ">
+            <div id="search-bar" class="lg:relative lg:w-[25%] bg-[#F5F5F5] py-[50px] px-[25px] h-fit">
                 <img class="button-search lg:hidden block cursor-pointer" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/left-chevron.svg" alt="">
-                <form id="text-search" class="flex flex-col mt-[50px]" method="POST">
+                <form id="text-search" class="flex flex-col" method="POST">
                     <input class="string-search pl-[40px] p-[10px] search-input " type="text" id="string" name="string" placeholder="Search...">
                     <input class="form-button " type="submit" value="SEARCH">
 
                 </form>
                 <form id="check-filters" class="flex flex-col mt-[50px] border-t-[1px] border-[#00000033]" method="POST">
-                    <div class="gap-[30px] flex flex-col mt-[50px]">
-                        <label class="text-[#00000099] text-[16px]">Series</label>
-                        <?php
-                        foreach ($terms as $key => $term) : ?>
-                            <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="series[]" value="<?php echo $term->slug ?>"><?php echo $term->name ?></label>
-                        <?php endforeach ?>
+                    <div class="section-container mt-[30px]">
+                        <label class="label text-[#00000099] text-[16px] block relative cursor-pointer">Series</label>
+                        <div class="container">
+                            <div class="gap-[30px] flex flex-col">
+                                <?php foreach ($terms as $key => $term) : ?>
+                                    <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="series[]" value="<?php echo $term->slug ?>"><?php echo $term->name ?></label>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
                     </div>
-                    <div class="my-[50px] border-t-[1px] border-[#00000033]">
-                        <label class="text-[#00000099] text-[16px] my-[50px] flex">Release Date Year</label>
-                        <label class="w-1/2 flex gap-[10px] float-left"><input type="checkbox" name="years[]" value="2023">2023</label>
-                        <label class="w-1/2 flex gap-[10px]"><input type="checkbox" name="years[]" value="2024">2024</label>
+                    <div class="section-container mt-[30px] py-[30px] border-t-[1px] border-[#00000033]">
+                        <label class="label text-[#00000099] text-[16px]  flex cursor-pointer relative">Release Date Year</label>
+                        <div class="container">
+                            <div class="gap-[30px] flex flex-col">
+                                <label class="w-1/2 flex gap-[10px] float-left"><input type="checkbox" name="years[]" value="2023">2023</label>
+                                <label class="w-1/2 flex gap-[10px]"><input type="checkbox" name="years[]" value="2024">2024</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="gap-[30px] flex flex-col  pt-[50px] border-t-[1px] border-[#00000033]">
-                        <label class="text-[#00000099] text-[16px]">Design Type</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="Mesh">Mesh</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="Full Face">Full Face</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="5 Spoke">5 Spoke</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="8 Spoke">8 Spoke</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="Split 5 Spoke">Split 5 Spoke</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="Directional">Directional</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="Multi Spoke">Multi Spoke</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="Concave">Concave</label>
+                    <div class="section-container flex flex-col  pt-[30px] border-t-[1px] border-[#00000033]">
+                        <label class="label text-[#00000099] text-[16px] cursor-pointer relative">Design Type</label>
+                        <div class="container">
+                            <div class="gap-[30px] flex flex-col">
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="Mesh">Mesh</label>
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="Full Face">Full Face</label>
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="5 Spoke">5 Spoke</label>
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="8 Spoke">8 Spoke</label>
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="Split 5 Spoke">Split 5 Spoke</label>
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="Directional">Directional</label>
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="Multi Spoke">Multi Spoke</label>
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="design[]" value="Concave">Concave</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="my-[50px] border-t-[1px] border-[#00000033]">
-                        <label class="text-[#00000099] text-[16px] my-[50px] flex">Material</label>
-                        <label class="w-1/2 flex gap-[10px] float-left"><input type="checkbox" name="material[]" value="Flow Formed">Flow Formed</label>
-                        <label class="w-1/2 flex gap-[10px] justify-center"><input type="checkbox" name="material[]" value="Forged">Forged</label>
+                    <div class="section-container mt-[30px] py-[30px] border-t-[1px] border-[#00000033]">
+                        <label class="label text-[#00000099] text-[16px] flex cursor-pointer relative">Material</label>
+                        <div class="container">
+                            <div class="gap-[30px] flex flex-col">
+                                <label class="w-1/2 flex gap-[10px]"><input type="checkbox" name="material[]" value="Flow Formed">Flow Formed</label>
+                                <label class="w-1/2 flex gap-[10px]"><input type="checkbox" name="material[]" value="Forged">Forged</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="gap-[30px] flex flex-col mb-[50px] pb-[50px] pt-[50px] border-b-[1px] border-t-[1px] border-[#00000033]">
-                        <label class="text-[#00000099] text-[16px]">Vehicle Type</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Exotic">Exotic</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Dually">Dually</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Truck">Truck</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Electric">Electric</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Muscle Car">Muscle Car</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="SUV">SUV</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Luxury">Luxury</label>
-                        <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Motorcycle">Motorcycle</label>
+                    <div class="section-container flex flex-col  py-[30px] border-y-[1px] border-[#00000033]">
+                        <label class="label text-[#00000099] text-[16px] cursor-pointer relative">Vehicle Type</label>
+                        <div class="container">
+                            <div class="gap-[30px] flex flex-col">
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Exotic">Exotic</label>
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Dually">Dually</label>
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Truck">Truck</label>
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Electric">Electric</label>
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Muscle Car">Muscle Car</label>
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="SUV">SUV</label>
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Luxury">Luxury</label>
+                                <label class="flex gap-[10px]"><input class="text-[16px]" type="checkbox" name="type[]" value="Motorcycle">Motorcycle</label>
+                            </div>
+                        </div>
                     </div>
-                    <input class="form-button" type="submit" value="APPLY">
+                    <div class="mt-[25px]">
+                        <input class="form-button" type="submit" value="APPLY">
+                    </div>
                 </form>
             </div>
             <div class="w-full lg:w-[75%]">
@@ -211,12 +232,9 @@ $terms = get_terms(array(
             </div>
         </div>
     </div>
-
 </section>
 <script>
     let post = <?php echo json_encode($_POST) ?>;
-
-    console.log(post.string);
 
     function markCheckbox(post) {
 
@@ -240,12 +258,19 @@ $terms = get_terms(array(
     let buttons = document.querySelectorAll(".button-search")
     buttons.forEach(button => {
         button.addEventListener("click", () => {
-            console.log("click");
             document.querySelector("#search-bar").classList.toggle("active")
         })
     });
-</script>
 
+
+    let label = document.querySelectorAll("#check-filters .label")
+    label.forEach(element => {
+        element.addEventListener("click", () => {
+            let parent = element.parentElement;
+            parent.classList.toggle("active")
+        })
+    });
+</script>
 
 
 <?php

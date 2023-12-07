@@ -39,15 +39,15 @@ $wp_query = new WP_Query($args);
             <p class="lg:w-[80%] text-[18px] text-white text-center"> <?php echo $headtitle ?> </p>
         </div>
         <div class="relative flex justify-center mt-[50px] lg:mt-[100px]">
-            <div id="gallery" class="w-[90%]">
+            <div id="gallery" class="w-[90%] three-slides">
                 <?php foreach ($wp_query->posts as $key => $car) :
                     $wheel_id = get_field("wheel", $car->ID)[0];
-                    $wheel_serie =  get_the_terms($wheel_id, "serie")[0]->name; ?>
+                    $wheel_name =  get_the_title($wheel_id); ?>
                     <div class="slick-slide relative">
                         <a href="<?php echo  get_permalink($car->ID) ?>">
                             <?php echo get_the_post_thumbnail($car->ID) ?>
                             <p class="text-white text-[24px] absolute bottom-[48px] left-[32px]"> <?php echo $car->post_title ?> </p>
-                            <span class="text-[#ffffff99] absolute bottom-[20px] left-[32px] text-[16px]"> <?php echo $wheel_serie  ?></span>
+                            <span class="text-[#ffffff99] absolute bottom-[20px] left-[32px] text-[16px]"> <?php echo $wheel_name  ?></span>
                         </a>
                     </div>
                 <?php endforeach ?>
@@ -73,7 +73,7 @@ $wp_query = new WP_Query($args);
             infinite: true,
             useTransform: false,
             arrows: true,
-            autoplay: true,
+            autoplay: false,
             autoplaySpeed: 3000,
             pauseOnFocus: false,
             pauseOnHover: false,

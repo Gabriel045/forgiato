@@ -22,7 +22,7 @@ $query              = new WP_Query($args);
 $next_post          = get_permalink($query->posts[0]->ID);
 $social_media       = get_field('social_media', 'option');
 $mail               = get_field('footer', 'option')["email"];
-$gallery            = get_field('gallery');
+$gallery            = get_field('gallery') ?: [];
 $sizes              = get_field('size');
 $forging            = get_field('forging');
 $car_slider         = get_field('car_slider');
@@ -30,14 +30,16 @@ $car_slider         = get_field('car_slider');
 
 
 
-array_unshift($gallery, get_the_post_thumbnail_url());
+if (!empty($gallery)) {
+    array_unshift($gallery, get_the_post_thumbnail_url());
+}
 
 //echo "<pre>";
 //var_dump($gallery);
 //echo "</pre>";
 ?>
 
-<main>
+<main class="bg-background">
     <section>
         <div class="single_content">
             <div class="flex lg:justify-between lg:flex-row items-center flex-col gap-y-[50px]">

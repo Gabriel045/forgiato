@@ -1,0 +1,15 @@
+{
+    "name": "acf/contact",
+    "title": "Contact",
+    "description": "A custom Contact  block.",
+    "category": "custom",
+    "icon": "block-default",
+    "keywords": [
+        "contact"
+    ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "contact.php"
+    },
+    "align": "full"
+}

@@ -9,6 +9,9 @@ function register_acf_blocks()
     register_block_type(__DIR__ . '/blocks/new-arrivals');
     register_block_type(__DIR__ . '/blocks/gallery');
     register_block_type(__DIR__ . '/blocks/social');
+    register_block_type(__DIR__ . '/blocks/contact');
+    register_block_type(__DIR__ . '/blocks/text');
+    register_block_type(__DIR__ . '/blocks/about-us');
 
 
 }

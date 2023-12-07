@@ -12,8 +12,8 @@
 
 <body <?php body_class(); ?>>
   <?php wp_body_open(); ?>
-  <header id="header_menu" class="overflow-x-clip flex justify-center relative ">
-    <div class="hero max-w-[1440px] w-full  py-[25px] bg-white flex">
+  <header id="header_menu" class="overflow-x-clip flex justify-center relative bg-background">
+    <div class="hero max-w-[1440px] w-full  py-[25px] flex">
       <div class="w-[20%] lg:w-[10%] flex items-center">
         <a href="<?php echo get_site_url() ?>" class="logo">
           <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/logo.svg" alt="">

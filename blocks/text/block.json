@@ -1,16 +1,15 @@
 {
-    "name": "acf/hero",
-    "title": "Hero",
-    "description": "A custom Hero block.",
-
+    "name": "acf/text",
+    "title": "Text",
+    "description": "A custom text  block.",
     "category": "custom",
     "icon": "block-default",
     "keywords": [
-        "Hero"
+        "text"
     ],
     "acf": {
         "mode": "preview",
-        "renderTemplate": "hero.php"
+        "renderTemplate": "text.php"
     },
     "align": "full"
 }

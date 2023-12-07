@@ -72,5 +72,6 @@ add_action('after_setup_theme', 'menu');
 add_theme_support('post-thumbnails');
 
 
+
 //Register ACF blocks
 include_once('acf-blocks.php');
