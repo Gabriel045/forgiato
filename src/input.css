@@ -4,25 +4,25 @@
 
 
 @font-face {
-    font-family: Poppins;
-    src: url('../assets/fonts/Poppins/Poppins-Light.ttf');
+    font-family: Heebo;
+    src: url('../assets/fonts/Heebo/Heebo-Light.ttf');
     font-weight: 300;
 }
 
 @font-face {
-    font-family: Poppins;
-    src: url('../assets/fonts/Poppins/Poppins-Regular.ttf');
+    font-family: Heebo;
+    src: url('../assets/fonts/Heebo/Heebo-Regular.ttf');
     font-weight: 400;
 }
 
 @font-face {
-    font-family: Poppins;
-    src: url('../assets/fonts/Poppins/Poppins-Medium.ttf');
-    font-weight: 500;
+    font-family: Bebas_Neue;
+    src: url('../assets/fonts/Bebas_Neue/BebasNeue-Regular.ttf');
+    font-weight: 600;
 }
 
 
-@font-face {
+/*@font-face {
     font-family: Poppins;
     src: url('../assets/fonts/Poppins/Poppins-SemiBold.ttf');
     font-weight: 600;
@@ -32,10 +32,10 @@
     font-family: Poppins;
     src: url('../assets/fonts/Poppins/Poppins-Bold.ttf');
     font-weight: 700;
-}
+}*/
 
 body {
-    font-family: Poppins;
+    font-family: Heebo;
 }
 
 .block_content {
@@ -62,7 +62,7 @@ section {
 
 .block_content h1 {
     color: #FFF;
-    font-family: Poppins;
+    font-family: Bebas_Neue;
     font-size: 72px;
     font-style: normal;
     font-weight: 600;
@@ -73,10 +73,12 @@ section {
 
 h1 {
     font-size: 72px;
+    font-family: Bebas_Neue;
+    font-weight: 600;
 }
 
 .block_content h3 {
-    font-family: Poppins;
+    font-family: Bebas_Neue;
     font-size: 36px;
     font-style: normal;
     font-weight: 600;
@@ -85,7 +87,7 @@ h1 {
 }
 
 .block_content h2 {
-    font-family: Poppins;
+    font-family: Bebas_Neue;
     font-size: 50px;
     font-style: normal;
     font-weight: 600;
@@ -94,7 +96,7 @@ h1 {
 }
 
 .block_content p {
-    font-family: Poppins;
+    font-family: Heebo;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -481,6 +483,35 @@ ul.menu .button a:hover {
     object-fit: cover;
 }
 
+
+.link::after {
+content: "";
+position: absolute;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+background-color: rgb(0 0 0 / 28%);
+opacity: 0;
+z-index: 99;
+transition: all 0.3s ease;
+}
+
+.link:hover::after{
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.link .titles{
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.link:hover .titles {
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
 .thumbnail:hover+.wheel-content .learn-more a img {
     margin-left: 12px;
     margin-right: 0px;
@@ -551,6 +582,15 @@ select {
     background-color: #F8F8F8;
 }
 
+@layer base {
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
 #form input[type="text"],
 #form input[type="email"],
 #form input[type="tel"],
@@ -594,6 +634,16 @@ select {
 
 #block_text ul li {
     margin-bottom: 5px;
+}
+
+/* the slides */
+#slider-nav .slick-slide {
+    margin: 0 10px !important;
+}
+
+/* the parent */
+#slider-nav .slick-list {
+    margin: 0 -10px !important;
 }
 
 @media screen and (max-width: 1350px) {
@@ -646,12 +696,11 @@ select {
 #video-container a::after {
     content: "";
     position: absolute;
-    width: 94%;
+    width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     background-color: rgb(0 0 0 / 28%);
-    margin: 0px 12px;
     opacity: 0;
     z-index: 99;
     transition: all 0.3s ease;
@@ -667,8 +716,8 @@ select {
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   width: 56px;
-   height: 56px;
+   width: 58px;
+   height: 58px;
    opacity: 0;
     transition: all 0.3s ease;
 }
@@ -678,6 +727,11 @@ select {
     right: -36px;
 }
 
+@media screen and (max-width: 1300px) {
+.single_content{
+    padding: 100px;
+}
+}
 @media screen and (max-width: 1023px) {
     .flex-col-reverse {
         flex-direction: column-reverse !important;

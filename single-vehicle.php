@@ -2,11 +2,11 @@
 
 get_header();
 
-$wheel_id           = get_field("wheel")[0];
-$wheel_name         = get_the_title($wheel_id);
-$ref                = get_field("details")["ref"];
-$car_slider         = get_field('gallery');
-$make               = get_field("details")["make"];
+$wheel_id            = get_field("wheel")[0];
+$wheel_name          = get_the_title($wheel_id);
+$ref                 = get_field("details")["ref"];
+$car_slider          = get_field('gallery');
+$make                = get_field("details")["make"];
 $model               = get_field("details")["model"];
 
 
@@ -23,20 +23,30 @@ $model               = get_field("details")["model"];
                 <p class="text-[18px] text-[#00000099] mb-[10px]">ON <?php echo $wheel_name ?> wheels</p>
                 <span class="text-[14px] text-[#00000099]">Ref#<?php echo $ref ?></span>
             </div>
-            <div class="relative flex justify-center mt-[100px]">
-                <div id="gallery" class="w-full md:w-[90%] lg:w-[100%]">
-                    <?php foreach ($car_slider as $key => $car) : ?>
+
+            <div class="relative mt-[100px] flex flex-col items-center gap-[20px]">
+                <div id="slider-for" class="w-full">
+                    <?php foreach ($car_slider as $key => $image) : ?>
                         <div class="slick-slide relative">
-                            <img class="w-full aspect-video	lg:h-[800px] object-cover" src="<?php echo $car["image"] ?>" alt="">
+                            <img class="w-full h-[350px] sm:h-[500px] md:h-[600px] lg:h-[830px] object-cover" src="<?php echo $image['image'] ?>" alt="">
                         </div>
                     <?php endforeach ?>
                 </div>
-                <div class="hidden md:flex buttons absolute  justify-between top-[50%] md:w-[106%] lg:w-[110%]" style="transform:translate(0% , -50%)">
+
+                <div id="slider-nav" class="w-full md:w-[85%] lg:w-[90%]">
+                    <?php foreach ($car_slider as $key => $image) : ?>
+                        <div class="slick-slide relative small-image border-[1px] border-[#00000033] cursor-pointer hover:border-[#000] hover:shadow-lg">
+                            <img class="w-full h-[200px] md:h-[220px] lg:h-[285px] object-cover" src="<?php echo $image['image'] ?>" alt="">
+                        </div>
+                    <?php endforeach ?>
+                </div>
+
+                <div class="hidden md:flex slider-nav  absolute  justify-between w-full bottom-[10%]" style="">
                     <div class="relative prev cursor-pointer about">
                         <img class="black" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/single-chevron-prev.svg">
                         <img class="white absolute top-0 opacity-0" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/single-chevron-prev-black.svg">
                     </div>
-                    <div class="relative prev cursor-pointer about">
+                    <div class="relative next cursor-pointer about">
                         <img class="black" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/single-chevron-next.svg">
                         <img class="white absolute top-0 opacity-0" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/single-chevron-next-black.svg">
                     </div>
@@ -45,8 +55,8 @@ $model               = get_field("details")["model"];
         </div>
     </section>
     <section>
-        <div class="block_content" style="padding-top:0px">
-            <div class="xl:px-[138px] wheel-image flex flex-wrap lg:flex-nowrap gap-y-[50px] lg:gap-y-0">
+        <div class="block_content" style="padding-top:0px; padding-bottom:0px;">
+            <div class="xl:px-[138px] wheel-image flex flex-wrap lg:flex-nowrap gap-y-[50px] lg:gap-y-0 bg-white">
                 <div class="w-full lg:w-[40%]">
                     <?php echo get_the_post_thumbnail($wheel_id) ?>
                 </div>
@@ -75,7 +85,7 @@ $model               = get_field("details")["model"];
     </section>
     <section>
         <div class="block_content" style="padding-top:0px">
-            <div class="lg:px-[138px]">
+            <div class="lg:px-[138px] pt-[150px] bg-white">
                 <h4 class="text-[24px]">Related Galleries:</h4>
                 <div class="mt-[50px]">
                     <form id="send-post" action="/gallery/" method="POST">
@@ -83,7 +93,7 @@ $model               = get_field("details")["model"];
                         <input type="hidden" class="model" name="model">
                         <input type="hidden" class="wheels" name="wheels">
                     </form>
-                    <div class="px-[30px] py-[50px]  bg-[#FBFBFB] mb-[2px] bg-background">
+                    <div class="px-[30px] py-[50px]  mb-[2px] bg-white">
                         <a id="make" class="flex justify-between cursor-pointer">
                             <p> <?php echo $make ?> Gallery</p>
                             <div class="relative prev cursor-pointer about">
@@ -93,7 +103,7 @@ $model               = get_field("details")["model"];
                             </div>
                         </a>
                     </div>
-                    <div class="px-[30px] py-[50px]  bg-[#FBFBFB] mb-[2px] bg-background">
+                    <div class="px-[30px] py-[50px]  mb-[2px] bg-white">
                         <a id="model" class="flex justify-between cursor-pointer">
                             <p> <?php echo $make ?> <?php echo $model ?> Gallery</p>
                             <div class="relative prev cursor-pointer about">
@@ -103,7 +113,7 @@ $model               = get_field("details")["model"];
                             </div>
                         </a>
                     </div>
-                    <div class="px-[30px] py-[50px]  bg-[#FBFBFB] mb-[2px] bg-background">
+                    <div class="px-[30px] py-[50px]  mb-[2px] bg-white">
                         <a id="wheels" class="flex justify-between cursor-pointer">
                             <p> <?php echo $wheel_name ?> Wheel Gallery</p>
                             <div class="relative prev cursor-pointer about">
@@ -120,30 +130,36 @@ $model               = get_field("details")["model"];
 </main>
 <script>
     jQuery(document).ready(() => {
-        jQuery('#gallery').slick({
-            infinite: true,
+        jQuery('#slider-for').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
+            fade: true,
             infinite: true,
-            useTransform: false,
+            asNavFor: '#slider-nav',
+            arrows: false,
+            dots: false
+        });
+        jQuery('#slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '#slider-for',
+            dots: false,
+            focusOnSelect: true,
             arrows: true,
-            dots: true,
+            infinite: true,
             autoplay: true,
-            autoplaySpeed: 3000,
-            pauseOnFocus: false,
-            pauseOnHover: false,
-            prevArrow: jQuery('.buttons .prev'),
-            nextArrow: jQuery('.buttons .next'),
+            autoplaySpeed: 2000,
+            prevArrow: jQuery('.slider-nav .prev'),
+            nextArrow: jQuery('.slider-nav .next'),
             responsive: [{
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                     slidesToScroll: 1,
                     arrows: false,
                     dots: false
                 }
             }, ]
-
         });
     })
     let form = document.querySelector("#send-post")

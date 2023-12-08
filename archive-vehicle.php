@@ -92,7 +92,7 @@ $wp_query_wheel = new WP_Query($wheel_args);
             <form id="form-make" class="flex flex-row flex-wrap gap-y-[10px]  gap-[60px] items-center justify-start" method="POST">
                 <div class="">
                     <span class="mr-[5px]">Make</span>
-                    <select id="select_make" name="make" class="filter_select" filtercat="make">
+                    <select id="select_make" name="make" class="filter_select  rounded-[5px]" filtercat="make" style="outline: #000 auto 1px; ">
                         <option value="all">Select Make</option>
                         <option value="Acura">Acura</option>
                         <option value="Alfa Romeo">Alfa Romeo</option>
@@ -143,7 +143,7 @@ $wp_query_wheel = new WP_Query($wheel_args);
                 </div>
                 <div class="<?php echo (!empty($models)) ? "" : "hidden" ?>">
                     <span class="mr-[5px]">Model</span>
-                    <select id="select_model" name="model" class="filter_select" filtercat="model">
+                    <select id="select_model" name="model" class="filter_select  rounded-[5px]" filtercat="model" style="outline: #000 auto 1px; ">
                         <option value="all">Select Model</option>
                         <?php foreach ($models as $key => $model) : ?>
                             <option <?php echo ($model["model"] == $_POST["model"]) ? 'selected="selected"' : "" ?> value="<?php echo $model["model"] ?>"><?php echo $model["model"] ?></option>
@@ -152,7 +152,7 @@ $wp_query_wheel = new WP_Query($wheel_args);
                 </div>
                 <div>
                     <span class="mr-[5px]">Wheel</span>
-                    <select id="select_wheel" name="wheels" class="filter_select" filtercat="wheel">
+                    <select id="select_wheel" name="wheels" class="filter_select  rounded-[5px]" filtercat="wheel" style="outline: #000 auto 1px; ">
                         <option value="all">Select Wheel</option>
                         <?php foreach ($wp_query_wheel->posts as $key => $wheel) : ?>
                             <option <?php echo ($wheel->post_title == $_POST["wheels"]) ? 'selected="selected"' : "" ?> value="<?php echo $wheel->ID ?>"> <?php echo $wheel->post_title ?></option>
@@ -163,20 +163,22 @@ $wp_query_wheel = new WP_Query($wheel_args);
             </form>
             <div>
                 <form id="form-ref" class="flex flex-nowrap" method="POST">
-                    <input class="w-[70%] py-[10px] px-[25px] text-[16px] lg:text-[18px] bg-[#F8F8F8]" type="number" name="ref" id="ref" placeholder="Ref#">
+                    <input class="w-[70%] py-[10px] px-[25px] text-[16px] lg:text-[18px] bg-[#F8F8F8]  rounded-[5px]" type="number" name="ref" id="ref" placeholder="Ref#" style="outline: #000 auto 1px; ">
                     <input class="form-button ml-[10px] text-[16px] lg:text-[18px]" style="margin-top:0;" type="submit" value="FIND">
                 </form>
             </div>
         </div>
-        <div class="flex flex-wrap mt-[100px] gap-y-[50px] lg:gap-y-[60px]">
+        <div class="flex flex-wrap mt-[100px] gap-y-[50px] lg:gap-y-[18px]">
             <?php foreach ($wp_query->posts as $key => $car) :
                 $wheel_id = get_field("wheel", $car->ID)[0];
                 $wheel_name =  get_the_title($wheel_id); ?>
-                <div class="w-full justify-center flex  sm:w-1/2 lg:w-1/3 sm:px-[12px] relative">
-                    <a class="link" href="<?php echo  get_permalink($car->ID) ?>">
+                <div class="w-full justify-center flex  sm:w-1/2 lg:w-1/3 sm:px-[9px] relative">
+                    <a class="link relative" href="<?php echo  get_permalink($car->ID) ?>">
                         <?php echo get_the_post_thumbnail($car->ID) ?>
-                        <p class="text-white text-[24px] absolute bottom-[48px] left-[32px]"> <?php echo $car->post_title ?> </p>
-                        <span class="text-[#ffffff99] absolute bottom-[20px] left-[32px] text-[16px]"> <?php echo $wheel_name  ?></span>
+                        <div class="titles relative z-[999]">
+                            <p class="text-white text-[24px] absolute bottom-[48px] left-[32px]"> <?php echo $car->post_title ?> </p>
+                            <span class="text-[#ffffff99] absolute bottom-[20px] left-[32px] text-[16px]"> <?php echo $wheel_name  ?></span>
+                        </div>
                     </a>
                 </div>
             <?php endforeach ?>
