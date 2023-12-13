@@ -565,21 +565,18 @@ transition: all 0.3s ease;
 
 #search .filter_select {
     color: #00000099;
-}
-
-.filter_select {
     appearance: none;
     background-image: url('../assets/images/arrow-gray.svg');
     background-repeat: no-repeat, repeat;
     background-position: right;
-    padding-right: 30px;
-    padding-left: 20px;
+    padding: 4px 30px 4px 20px;
+    background-size: contain;
 }
 
 input[type="text"],
 input[type="number"],
 select {
-    background-color: #F8F8F8;
+    @apply bg-background 
 }
 
 @layer base {

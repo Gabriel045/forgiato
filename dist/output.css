@@ -622,10 +622,6 @@ input[type="number"]::-webkit-inner-spin-button,
   z-index: 60;
 }
 
-.z-\[\] {
-  z-index: ;
-}
-
 .z-\[999\] {
   z-index: 999;
 }
@@ -1011,10 +1007,6 @@ input[type="number"]::-webkit-inner-spin-button,
   overflow-x: clip;
 }
 
-.rounded-\[5px\] {
-  border-radius: 5px;
-}
-
 .border-\[1px\] {
   border-width: 1px;
 }
@@ -1035,11 +1027,6 @@ input[type="number"]::-webkit-inner-spin-button,
 .border-black {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
-}
-
-.bg-\[\#F8F8F8\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 248 248 / var(--tw-bg-opacity));
 }
 
 .bg-\[white\] {
@@ -1109,6 +1096,11 @@ input[type="number"]::-webkit-inner-spin-button,
 .py-\[50px\] {
   padding-top: 50px;
   padding-bottom: 50px;
+}
+
+.py-\[5px\] {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .pb-\[70px\] {
@@ -1751,23 +1743,21 @@ ul.menu .button a:hover {
 
 #search .filter_select {
   color: #00000099;
-}
-
-.filter_select {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   background-image: url('../assets/images/arrow-gray.svg');
   background-repeat: no-repeat, repeat;
   background-position: right;
-  padding-right: 30px;
-  padding-left: 20px;
+  padding: 4px 30px 4px 20px;
+  background-size: contain;
 }
 
 input[type="text"],
 input[type="number"],
 select {
-  background-color: #F8F8F8;
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 247 237 / var(--tw-bg-opacity));
 }
 
 #form input[type="text"],
@@ -2094,6 +2084,10 @@ select {
 
   .lg\:mt-\[150px\] {
     margin-top: 150px;
+  }
+
+  .lg\:mt-\[50px\] {
+    margin-top: 50px;
   }
 
   .lg\:flex {

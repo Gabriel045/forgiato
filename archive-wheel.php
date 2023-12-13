@@ -132,7 +132,7 @@ $terms = get_terms(array(
             <div id="search-bar" class="lg:relative lg:w-[25%] bg-background border-[1px] border-[#00000033] py-[50px] px-[25px] h-fit">
                 <img class="button-search lg:hidden block cursor-pointer" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/left-chevron.svg" alt="">
                 <form id="text-search" class="flex flex-col" method="POST">
-                    <input class="string-search pl-[40px] p-[10px] search-input rounded-[5px]" type="text" id="string" name="string" placeholder="Search..." style="outline: #000 auto 1px; ">
+                    <input class="string-search pl-[40px] p-[10px] search-input" type="text" id="string" name="string" placeholder="Search..." style="outline: #000 solid thin;">
                     <input class="form-button " type="submit" value="SEARCH">
 
                 </form>

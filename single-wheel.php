@@ -185,7 +185,7 @@ if (!empty($gallery)) {
                     </div>
                 </div>
             </div>
-            <div class="mt-[32px] lg:mt-[100px] flex justify-center items-center">
+            <div class="mt-[32px] lg:mt-[50px] flex justify-center items-center">
                 <span class="text-[16px] text-[#00000099] mr-[30px]">Share wheel on</span>
                 <a target="_blank" class="mr-[20px] md:mr-[30px] hover:translate-y-[1px] transform" href="<?php echo $social_media["facebook"] ?>"> <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/facebook.svg" alt=""> </a>
                 <a target="_blank" class="mr-[20px] md:mr-[30px] hover:translate-y-[1px] transform" href="<?php echo $social_media["google+"] ?>"> <img class="w-[22px]" src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/google+.svg" alt=""> </a>
@@ -195,7 +195,7 @@ if (!empty($gallery)) {
         </div>
     </section>
     <section>
-        <div class="block_content" style="">
+        <div class="block_content" style="padding-top:0px;">
             <div class="bg-[white] py-[50px] lg:px-[30px]">
                 <h2>Related wheels </h2>
                 <div class="flex flex-wrap mt-[100px] gap-y-[50px] lg:gap-y-[60px]">

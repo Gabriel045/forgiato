@@ -92,7 +92,7 @@ $wp_query_wheel = new WP_Query($wheel_args);
             <form id="form-make" class="flex flex-row flex-wrap gap-y-[10px]  gap-[60px] items-center justify-start" method="POST">
                 <div class="">
                     <span class="mr-[5px]">Make</span>
-                    <select id="select_make" name="make" class="filter_select  rounded-[5px]" filtercat="make" style="outline: #000 auto 1px; ">
+                    <select id="select_make" name="make" class="filter_select " filtercat="make" style="outline: #000 solid thin;">
                         <option value="all">Select Make</option>
                         <option value="Acura">Acura</option>
                         <option value="Alfa Romeo">Alfa Romeo</option>
@@ -143,7 +143,7 @@ $wp_query_wheel = new WP_Query($wheel_args);
                 </div>
                 <div class="<?php echo (!empty($models)) ? "" : "hidden" ?>">
                     <span class="mr-[5px]">Model</span>
-                    <select id="select_model" name="model" class="filter_select  rounded-[5px]" filtercat="model" style="outline: #000 auto 1px; ">
+                    <select id="select_model" name="model" class="filter_select " filtercat="model" style="outline: #000 solid thin;">
                         <option value="all">Select Model</option>
                         <?php foreach ($models as $key => $model) : ?>
                             <option <?php echo ($model["model"] == $_POST["model"]) ? 'selected="selected"' : "" ?> value="<?php echo $model["model"] ?>"><?php echo $model["model"] ?></option>
@@ -152,7 +152,7 @@ $wp_query_wheel = new WP_Query($wheel_args);
                 </div>
                 <div>
                     <span class="mr-[5px]">Wheel</span>
-                    <select id="select_wheel" name="wheels" class="filter_select  rounded-[5px]" filtercat="wheel" style="outline: #000 auto 1px; ">
+                    <select id="select_wheel" name="wheels" class="filter_select " filtercat="wheel" style="outline: #000 solid thin;">
                         <option value="all">Select Wheel</option>
                         <?php foreach ($wp_query_wheel->posts as $key => $wheel) : ?>
                             <option <?php echo ($wheel->post_title == $_POST["wheels"]) ? 'selected="selected"' : "" ?> value="<?php echo $wheel->ID ?>"> <?php echo $wheel->post_title ?></option>
@@ -163,8 +163,8 @@ $wp_query_wheel = new WP_Query($wheel_args);
             </form>
             <div>
                 <form id="form-ref" class="flex flex-nowrap" method="POST">
-                    <input class="w-[70%] py-[10px] px-[25px] text-[16px] lg:text-[18px] bg-[#F8F8F8]  rounded-[5px]" type="number" name="ref" id="ref" placeholder="Ref#" style="outline: #000 auto 1px; ">
-                    <input class="form-button ml-[10px] text-[16px] lg:text-[18px]" style="margin-top:0;" type="submit" value="FIND">
+                    <input class="w-[70%] py-[5px] px-[25px] text-[16px] bg-background " type="number" name="ref" id="ref" placeholder="Ref#" style="outline: #000 solid thin;">
+                    <input class="form-button ml-[10px] text-[16px]" style="margin-top:0; padding: 5px 30px; " type="submit" value="FIND">
                 </form>
             </div>
         </div>
